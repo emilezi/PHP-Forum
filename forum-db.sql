@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 07 avr. 2021 à 22:46
+-- Généré le : Dim 16 mai 2021 à 22:59
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 8.0.1
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `siteweb`
+-- Base de données : `db`
 --
 
 -- --------------------------------------------------------
@@ -51,6 +51,29 @@ CREATE TABLE `forum_sujet` (
   `id_sujet` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `pseudo` varchar(255) NOT NULL,
+  `prenom` varchar(255) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `pseudo`, `prenom`, `nom`, `date`, `password`) VALUES
+(2, 'emilez@localhost', 'emilez', 'Emile', 'Zimmer', '2021-05-16 20:52:50', '$2y$12$MwW.Eh7ViVjvnunVNtWgVuYk59Pj9hH0vuY6./pRb6oSNH7IbA4a.');
+
 --
 -- Index pour les tables déchargées
 --
@@ -68,6 +91,14 @@ ALTER TABLE `forum_sujet`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `pseudo` (`pseudo`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -82,6 +113,12 @@ ALTER TABLE `forum_reponses`
 --
 ALTER TABLE `forum_sujet`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

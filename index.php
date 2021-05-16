@@ -36,7 +36,8 @@
 	}
 
 	echo "<p><a href='new_sujet.php'>Nouveau sujet</a></p>
-    <p><a href='my_sujets.php'>Mes sujets</a></p>";
+    <p><a href='my_sujets.php'>Mes sujets</a></p>
+	<p><a href='compte.php'>Compte</a></p>";
 
 
 	echo
